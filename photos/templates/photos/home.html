@@ -1,0 +1,22 @@
+{% extends 'photos/base.html' %}
+
+{% block content %}
+
+    <div class="jumbotron">
+        <h1>Welcome to Hipster Puppies!</h1>
+        <h2>We run Hipster Puppy Contests where you can vote for the most hipster puppies of the web.</h2>
+    </div>
+
+    {% if latest_contests %}
+        <ul class="list-group">
+            {# Loop over the latest_contests list and get each contest #}
+            {% for contest in latest_contests %}
+                {# We can build a url with the name of our path using the url template tag #}
+                <li class="list-group-item"><a href="{% url 'photos:detail' contest.id %}">{{ contest.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hipster puppy contests are available.</p>
+    {% endif %}
+
+{% endblock %}

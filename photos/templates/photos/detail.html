@@ -1,0 +1,34 @@
+{% extends 'photos/base.html' %}
+
+
+{% block content %}
+
+    <h1>{{ contest.title }}</h1>
+
+
+    {# Our form action needs to point to our vote route, we use the url template tag again #}
+    <form action="{% url 'photos:vote' contest.id %}" method="post" class="row">
+        {% csrf_token %} {# The CSRF token is a security measure #}
+
+        {% for photo in contest.photo_set.all %}
+            <div class="col-md-4">
+                <div class="card">
+                    <label for="photo{{ forloop.counter }}">
+                        <img class="card-img-top" src="{{ photo.picture }}" />
+                    </label>
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ photo.title }}</h5>
+
+                        Select: <input type="radio" name="photo" id="photo{{ forloop.counter }}" value="{{ photo.id }}" />
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+
+        <input type="submit" class="btn btn-primary" value="Vote" />
+    </form>
+
+
+{% endblock %}
