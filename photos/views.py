@@ -77,7 +77,7 @@ class ContestVoteView(View):
 
     # We are going to receive a POST request with this view, so we're going to create a method called post.
     def post(self, request, **kwargs):
-        # The contest primary key is included on the url: locahost:8000/5/results/
+        # The contest primary key is included on the url: locahost:8000/5/vote/
         # We use value capturing in our urls.py to get the # 5 and save it to pk
         # The pk variable is in the dictionary self.kwargs, and we can use .get() on
         # the self.kwargs dict.
