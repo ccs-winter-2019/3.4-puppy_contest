@@ -44,7 +44,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'hipsterpuppy.herokuapp.com',
+    '.herokuapp.com',
 ]
 
 
